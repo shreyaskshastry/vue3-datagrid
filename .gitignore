@@ -21,3 +21,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# unncessary Files
+.browserslistc
+babel.config.json
+jsconfig.json
+vue.config.json
