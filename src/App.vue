@@ -1,22 +1,43 @@
 <template>
   <Search/>
-  <Grid :rows = "rows" :columns = "columns" :searchable = "searchable"/>
+  <Grid :rows = "rows" :columns = "columns" :searchable = "searchable" :pageSize = "pageSize"/>
 </template>
 
 <script setup>
-import Grid from './views/DataGrid.vue'
+import Grid from './components/DataGrid.vue'
 </script>
 
 <script>
 export default {
   data: function () {
     return {
-      searchable:true
+      searchable:true,
+      pageSize:5,
     };
   },
   computed: {
     rows: function () {
       return [
+        {
+          'Company': 'Google',
+          'Contact': 'Mariz',
+          'Country': 'USA'
+        },
+        {
+          'Company': 'Meta',
+          'Contact': 'Mario',
+          'Country': 'Canada'
+        },
+        {
+          'Company': 'LTI',
+          'Contact': 'LOL',
+          'Country': 'India'
+        },
+        {
+          'Company': 'HP',
+          'Contact': 'lul',
+          'Country': 'USA'
+        },
         {
           'Company': 'Google',
           'Contact': 'Mariz',
