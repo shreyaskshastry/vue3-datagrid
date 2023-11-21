@@ -1,6 +1,6 @@
 <template>
   <Search/>
-  <Grid :rows = "rows" :columns = "columns" :searchable = "searchable" :pageSize = "pageSize"/>
+  <Grid :rows = "rows" :columns = "columns" :searchable = "searchable" :pagable ="pagable" :pageSize = "pageSize"/>
 </template>
 
 <script setup>
@@ -13,6 +13,7 @@ export default {
     return {
       searchable:true,
       pageSize:5,
+      pagable: true,
     };
   },
   computed: {

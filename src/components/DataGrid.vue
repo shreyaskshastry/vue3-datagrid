@@ -20,10 +20,10 @@
                 </tr>
             </table>
         </div>
-        <div class="grid-footer">
+        <div class="grid-footer" v-show="pagable">
             <div class = "paginator">
                 <button @click="goLeft()">&lt;</button>
-                <input class="pageInput" type="text" v-model="currentPage">/{{ totalPages }}
+                <input class="pageInput" type="number" v-model="currentPage" @change="changePage($event)">/{{ totalPages }}
                 <button @click="goRight()">&gt;</button>
             </div>
         </div>
@@ -47,6 +47,7 @@ export default {
         rows: Array,
         columns: Array,
         searchable: Boolean,
+        pagable: Boolean,
         pageSize: Number,
     },
     computed: {
@@ -58,6 +59,12 @@ export default {
         this.computeRows()
     },
     methods: {
+        changePage(e){
+            if(parseInt(e.target.value) >= 1 && parseInt(e.target.value) <= this.totalPages){
+                this.currentPage = e.target.value;
+                this.computeRows();
+            }
+        },
         goLeft() {
             this.currentPage = Math.max(this.currentPage - 1 , 1);
             this.computeRows();
@@ -109,6 +116,6 @@ tr:nth-child(even) {
 }
 
 .pageInput{
-    width: 15px;
+    width: 25px;
 }
 </style>
