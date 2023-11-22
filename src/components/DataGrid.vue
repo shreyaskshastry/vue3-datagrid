@@ -11,7 +11,7 @@
       <table id="grid">
         <tr>
           <th :key="column.title" v-for="column in columns">
-            {{ column.title }}
+            {{ column.title }}<button class="btn btn-primary dropdown-toggle" data-sort="none"> <i id="sortId" class="fa fa-sort" @click="sortfunction($event)"></i></button>
           </th>
         </tr>
         <tr :key="row" v-for="row in computedRows">
@@ -106,6 +106,23 @@ export default {
       }
       this.currentPage = 1;
       this.computeRows();
+    },
+    sortfunction(e){
+      e.preventDefault();
+			var icon = e.target;
+      
+      if(icon.classList.contains("fa-sort")){
+        icon.classList.remove("fa-sort");
+        icon.classList.add("fa-sort-asc");
+      }else if(icon.classList.contains("fa-sort-asc")){
+        icon.classList.remove("fa-sort-asc");
+        icon.classList.add("fa-sort-desc");
+      }else{
+        icon.classList.remove("fa-sort-desc");
+        icon.classList.add("fa-sort-asc");
+      }
+      console.log(icon);
+
     }
   }
 }
@@ -147,5 +164,9 @@ tr:nth-child(even) {
 
 .pageInput {
   width: 25px;
+}
+
+.button{
+  padding-left: 5px;
 }
 </style>
