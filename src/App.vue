@@ -1,5 +1,4 @@
 <template>
-  <Search/>
   <Grid :rows = "rows" :columns = "columns" :searchable = "searchable" :pagable ="pagable" :pageSize = "pageSize"/>
 </template>
 
@@ -63,9 +62,9 @@ export default {
     },
     columns: function () {
       return [
-        { field: 'Company',title: 'Company', id:0},
-        { field: 'Contact',title: 'Contact', id:1},
-        { field: 'Country',title: 'Country', id:2 },
+        { field: 'Company',title: 'Company'},
+        { field: 'Contact',title: 'Contact'},
+        { field: 'Country',title: 'Country'},
       ];
     },
   },
