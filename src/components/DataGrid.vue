@@ -99,11 +99,13 @@ export default {
         this.tableRows = this.tableRows.filter((row) => 
           this.searchRow(row,searchValue,cols)
         )
-        this.computeRows();
+        // this.computeRows();
       }else{
         this.tableRows = this.rows;
-        this.computeRows();
+        
       }
+      this.currentPage = 1;
+      this.computeRows();
     }
   }
 }
