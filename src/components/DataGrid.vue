@@ -82,7 +82,7 @@ export default {
     searchRow(row,searchValue,cols){
       for(let col in cols){
         var wordSearch = row[cols[col]];
-        if(wordSearch.toLowerCase().includes(searchValue)){
+        if(wordSearch.toLowerCase().includes(searchValue.toLowerCase())){
           return true;
         }
       }
@@ -91,7 +91,6 @@ export default {
     searchOnTable(e) {
       if(e.target.value != ''){
         var searchValue = e.target.value;
-        console.log(searchValue);
         var cols = []
         for(let col in this.columns){
           cols.push(this.columns[col].title)
