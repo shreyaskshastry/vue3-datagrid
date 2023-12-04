@@ -62,9 +62,9 @@ export default {
     },
     columns: function () {
       return [
-        { field: 'Company',title: 'Company', sortable: true},
-        { field: 'Contact',title: 'Contact'},
-        { field: 'Country',title: 'Country',sortable: true},
+        { field: 'Company',title: 'Company', sortable: true, filterable: true},
+        { field: 'Contact',title: 'Contact',filterable: true},
+        { field: 'Country',title: 'Country',sortable: true,filterable: true},
       ];
     },
   },

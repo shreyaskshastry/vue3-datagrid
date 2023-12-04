@@ -11,7 +11,9 @@
       <table id="grid">
         <tr id="columns">
           <th :key="column.title" v-for="column in columns">
-            {{ column.title }}<button class="btn btn-primary dropdown-toggle" data-sort="none" v-if="column.sortable"> <i class="fa fa-sort" @click="sortfunction($event,column.title)"></i></button>
+            {{ column.title }}<button class="btn btn-primary dropdown-toggle sortButton" data-sort="none" v-if="column.sortable"><i class="fa fa-sort" @click="sortfunction($event,column.title)"></i></button>
+            <button class="btn btn-primary dropdown-toggle filterButton" data-sort="none" v-if="column.filterable"><i class="fa fa-caret-down" @click="renderFilterfunction($event,column.title)"></i></button>
+            
           </th>
         </tr>
         <tr :key="row" v-for="row in computedRows">
@@ -146,6 +148,18 @@ export default {
       }
       this.computeRows();
       // console.log(icon);
+    },
+    onlyUnique(value, index, array) {
+      return array.indexOf(value) === index;
+    },
+    renderFilterfunction(e,title){
+      e.preventDefault();
+      var filterOptions = [];
+      for(var choice in this.computedRows){
+        filterOptions.push(this.computedRows[choice][title])
+      }
+      filterOptions = filterOptions.filter(this.onlyUnique);
+      console.log(filterOptions);
     }
   }
 }
@@ -191,5 +205,9 @@ tr:nth-child(even) {
 
 .button{
   padding-left: 5px;
+}
+
+.filterButton{
+  right: 0;
 }
 </style>
