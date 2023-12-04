@@ -11,7 +11,7 @@
       <table id="grid">
         <tr id="columns">
           <th :key="column.title" v-for="column in columns">
-            {{ column.title }}<button class="btn btn-primary dropdown-toggle" data-sort="none"> <i class="fa fa-sort" @click="sortfunction($event,column.title)"></i></button>
+            {{ column.title }}<button class="btn btn-primary dropdown-toggle" data-sort="none" v-if="column.sortable"> <i class="fa fa-sort" @click="sortfunction($event,column.title)"></i></button>
           </th>
         </tr>
         <tr :key="row" v-for="row in computedRows">
